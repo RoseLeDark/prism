@@ -1,0 +1,28 @@
+name: v256i
+description: |
+  Ein 256-Bit breiter Vektor bestehend aus 8 × 32-Bit Werten. Wird für Parallelberechnungen und Registerbankoperationen verwendet.
+type_category: vector
+bit_width: 256
+element_type: uint32_t
+element_count: 8
+element_size: 4
+element_alignment: 4
+usage:
+  - Temporärer Rechenpuffer
+  - Schnittstelle zu Bank-A bis D
+related_functions:
+      - _v256_set8_uiv
+      - _v256_store_bank_v
+      - _v256_store_bank_a
+      - _v256_store_bank_b
+      - _v256_load_bank_x
+      - _v256_load_bank_a
+      - _v256_load_bank_b
+      - _v256_load_bank_c
+      - _v256_load_bank_d
+      - _v256_extract_ui32
+prism-version: 1.0
+prism-extensions:
+  - prism_type_base
+  - prism_type_vector
+  - prism_type_vector_v256i

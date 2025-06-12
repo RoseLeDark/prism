@@ -33,20 +33,26 @@ PRISM supports multiple ESP32-based SIMD coprocessors working in parallel.
 ## 🧰 Client API Example
 
 ```cpp
+
+prism_err err = PR_OK;
+
 _pridev device = prism_dev_hs(addr, Flankspeed);
-_v256i a = prism_set1_ui32(0xABCD);
-prism_write_v256a(a, device, portMaxTime);
-prism_op_notc(device);
-_v256i c = prism_read_v256c(device, timeout);
-uint32_t result = prism_extract_ui32(c, 0);
+_v256i a = _v256_set1_uiv(0xABCD);
+_v256i b = _v256_set1_uiv(0xEF01);
+_v256_store_bank_a(device, a, portMaxTime);
+_v256_store_bank_b(device, b, portMaxTime);
+_v256_add1_ui32(device, portMaxTime);
+_v256i c = _v256_load_bank_c(device, timeout, err);
+if(err != PR_OK) return;
+
+uint32_t result = _v256_extract_ui32(c, 0);
 ```
 
 Available operations include:
 
-- `prism_set*` – Input register manipulation
-- `prism_op_*` – Operation triggers
-- `prism_add_*`, `prism_sub_*`, etc. – Inline ALU-style commands
-- `prism_extract_*` – Result decoding
+- `_v256_set{1-8}_*` – Input register manipulation
+- `_v256_add{1-8}_*`,`_v256_sub{1-8}_*`  – etc. – Inline ALU-style commands
+- `_v256_extract_ui32*` – Result decoding
 
 New functions can be registered via the Registry with vendor-specific suffixes.
 

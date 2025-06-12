@@ -1,0 +1,45 @@
+functions:
+  - name: _v256_store_bank_a
+    description: Stores a 256-bit vector into Bank A via the parallel bus.
+    parameters:
+      - name: device
+        type: _pridev
+        direction: in
+        description: Gerätehandle, das von der Platformfunktion `prism_dev_hs` zurückgegeben wird.
+      - name: value
+        type: v256i
+        direction: in
+        description: 256-bit vector to write
+      - name: timeout
+        type: uint32_t
+        direction: in
+        description: Timeout in microseconds
+    returns:
+      type: prism_err
+      description: PR_OK if successful, otherwise error code
+    flags:
+      side_effects: true
+      reads_bank: false
+      writes_bank: true
+      modifies_device_state: false
+    examples:
+      - code: |
+          v256i vec = _v256_set8_uiv(1, 2, 3, 4, 5, 6, 7, 8);
+          prism_err err = _v256_store_bank_a(device, vec, 1000);
+          if (err != PR_OK) {
+              // Handle error
+          }
+        description: Stores a vector into Bank A of the device.
+    related_functions:
+      - _v256_set8_uiv
+      - _v256_store_bank_v
+      - _v256_load_bank_a
+      - _v256_store_bank_b
+      - _v256_load_bank_x
+      - _v256_load_bank_a
+      - _v256_load_bank_b
+      - _v256_load_bank_c
+      - _v256_load_bank_d
+    prism-version: 1.0
+    prism-extensions:
+      - prism_type_base

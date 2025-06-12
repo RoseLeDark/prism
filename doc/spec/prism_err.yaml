@@ -1,0 +1,22 @@
+name: prism_err
+description: |
+  Fehlercode-Typ für PRISM-SIMD API. Gibt Erfolg oder Fehlschlag mit definierter Fehlerart zurück.
+type_category: enum
+base_type: int32_t
+values:
+  - name: PR_OK
+    value: 0
+    description: Kein Fehler
+  - name: PR_TIMEOUT
+    value: 1
+    description: Zeitüberschreitung bei der Kommunikation
+  - name: PR_INVALID_ARG
+    value: 2
+    description: Ungültiger Funktionsparameter
+  - name: PR_DEVICE_FAULT
+    value: 3
+    description: Geräteinterner Fehler
+prism-version: 1.0
+prism-extensions:
+  - prism_type_base
+

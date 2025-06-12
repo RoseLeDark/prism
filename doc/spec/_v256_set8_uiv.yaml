@@ -1,0 +1,70 @@
+functions:
+  - name: _v256_set8_uiv
+    description: |
+      Erstellt einen 256-Bit Vektor aus 8 × 32-Bit Werten.
+    parameters:
+      - name: v0
+        type: uint32_t
+        direction: in
+        description: Erster 32-Bit Wert
+      - name: v1
+        type: uint32_t
+        direction: in
+        description: Zweiter 32-Bit Wert
+      - name: v2
+        type: uint32_t
+        direction: in
+        description: Dritter 32-Bit Wert
+      - name: v3
+        type: uint32_t
+        direction: in
+        description: Vierter 32-Bit Wert
+      - name: v4
+        type: uint32_t
+        direction: in
+        description: Fünfter 32-Bit Wert
+      - name: v5
+        type: uint32_t
+        direction: in
+        description: Sechster 32-Bit Wert
+      - name: v6
+        type: uint32_t
+        direction: in
+        description: Siebter 32-Bit Wert
+      - name: v7
+        type: uint32_t
+        direction: in
+        description: Achter 32-Bit Wert
+    returns:
+      type: v256i
+      description: Erstellter 256-Bit Vektor mit den angegebenen Werten.
+    flags:
+      side_effects: false
+      reads_bank: false
+      writes_bank: false
+      modifies_device_state: false
+    examples:
+      - code: |
+          v256i vec = _v256_set8_uiv(1, 2, 3, 4, 5, 6, 7, 8);
+          // vec enthält jetzt die Werte {1, 2, 3, 4, 5, 6, 7, 8}
+        description: Erstellt einen Vektor mit den Werten von 1 bis 8.
+    related_functions:
+      - _v256_store_bank_v
+      - _v256_load_bank_a
+      - _v256_store_bank_b
+      - _v256_load_bank_x
+      - _v256_load_bank_a
+      - _v256_load_bank_b
+      - _v256_load_bank_c
+      - _v256_load_bank_d
+    prism-version: 1.0
+    prism-extensions:
+      - prism_type_base
+      - prism_type_vector
+      - prism_type_vector_v256i
+      - prism_type_vector_v256i_8x32u
+      - prism_type_vector_v256i_8x32u_bank_a
+      - prism_type_vector_v256i_8x32u_bank_b
+      - prism_type_vector_v256i_8x32u_bank_c
+      - prism_type_vector_v256i_8x32u_bank_d
+   
