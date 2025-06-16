@@ -1,7 +1,3 @@
-[submodule "api"]
-path = api
-url = https://github.com/RoseLeDark/prism-api.git
-
 [submodule "prism-firmware-esp"]
 path = firmware/prism-esp-soft 
 url = https://github.com/RoseLeDark/prism-esp-soft.git
